@@ -2,7 +2,6 @@ function pika() {
     
     var templateParamRe = /{{ ([^ ]*) }}/g
 
-
     function objectParseAccess(object, accessString) {
 	let delim = /[^.\[]+/g;
 	let bracketed = /\[([^\[\]]+)\]/;
@@ -39,12 +38,9 @@ function pika() {
 	let allLoops = el.getElementsByClassName("for-loop");
 	let outermostLoops = [];
 
-	// Filter out nested loops
 	for (let i = 0; i < allLoops.length; i++) {
             let loop = allLoops[i];
             let isNested = false;
-            
-            // Check if any parent is also a "for-loop"
             let parent = loop.parentElement;
             while (parent && parent != el) {
 		if (parent.classList && parent.classList.contains("for-loop")) {
@@ -54,7 +50,6 @@ function pika() {
 		parent = parent.parentElement;
             }
             
-            // Only add outermost loops to the list
             if (!isNested) {
 		outermostLoops.push(loop);
             }
@@ -90,24 +85,13 @@ function pika() {
 	    if (tagAdd != null) {
 		cpy = `<${tagAdd}>${cpy}</${tagAdd}>`;
 	    }
-	    // if (el.tagName === "TR") {
-	    // 	cpy = "<tr>" + cpy;
-	    // 	cpy = cpy + "</tr>";
-	    // }
 	    newInnerHTML += cpy;
-	    // iterations++;
 	}
-	if (tagAdd != null) {
-	    
-	}
-	if (tagAdd != null) {
+	if (tagAdd === "tr") {
 	    el.outerHTML = newInnerHTML;
 	} else {
 	    el.innerHTML = newInnerHTML;
 	}
-	// if (el.tagName === "TR") {
-	//     el.innerHTML = `<tr>${el.innerHTML}</tr>`;
-	// }
 
 	addtlLoops = getOutermostForLoops(el);
 	let cachedContentsIndex = 0;
@@ -119,15 +103,12 @@ function pika() {
 	addtlLoops = getOutermostForLoops(el);
 	for (let i=0; i<addtlLoops.length; i++) {
 	    let loop = addtlLoops[i];
-	    // loop.outerHTML = savedInnerLoopContents[i];
 	    let newData = data[i][loop.getAttribute("iterable")];
 	    populateForLoop(newData, loop, el);
 	}
     }
 
-
     let templateVarName = document.body.getAttribute("templateVar");
-    // let els = document.getElementsByClassName("for-loop");
     
     let topObj;
     if (templateVarName === null) {

@@ -1,4 +1,4 @@
-## Pika
+# Pika
 
 ### A tiny client-side templating tool
 
@@ -59,13 +59,13 @@ HTML:
 ```
 <ul>
   <li class="for-loop" iterable="audio_files">
-    <a href="{{ href }}">{{ track_title }}</a>
-    <ul>
+	<a href="{{ href }}">{{ title }}</a>
+	<ul>
       <li class="for-loop" iterable="stats">
-        {{ name }} : {{ value }}
-      </li>
-    </ul>
-  </div>
+	  {{ name }} : {{ value }}
+	  </li>
+	</ul>
+  </li>
 </ul>
 ```
 
@@ -77,20 +77,23 @@ var template_data = {"audio_files": [
   {
     "title": "my_beat",
     "href": "my_beat.wav",
-    "stats: [
-      {"name" : "length_seconds", "value" : 253},
-      {"name" : "sample_rate", "value", "44.1kHZ"}
+	"stats": [
+	  {"name" : "length_seconds", "value" : 253},
+	  {"name" : "sample_rate", "value": "44.1kHZ"}
     ]
   },
   {
-    "title": "tune",
-    "href": "tune.wav",
-    "stats: [
-      {"name" : "length_seconds", "value" : 133},
-      {"name" : "sample_rate", "value", "48.0kHZ"}
+	"title": "tune",
+	"href": "tune.wav",
+	"stats": [
+	  {"name" : "length_seconds", "value" : 133},
+	  {"name" : "sample_rate", "value": "48.0kHZ"}
+    ]
   }
 ]};
 ```
+
+Note that a `<li>` element is being used for the for loop here. `<tr>` elements can also be used. 
 
 ## Final step
 Now all you need to do is add `pika.js` to your file and call `pika()` at load time to complete the template:
