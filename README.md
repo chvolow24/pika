@@ -23,13 +23,15 @@ E.g.:
 Now, you are free to access members of the `templateVar` (in this case, `some_data`) in your HTML, using double curly braces (w/ spaces):
 
 
+JS:
 ```
 var some_data = {
-	"author": {
-		"name": "Charlie"
-	}
+  "author": {
+    "name": "Charlie"
+  }
 }
 ```
+HTML:
 ```
 <h3>by {{ author.name }}</h3>
 ```
@@ -38,12 +40,11 @@ var some_data = {
 
 For loops are also supported by setting the `class` and `iterable` properties on arbitrary elements:
 
-
 ```
 <ul>
-	<div class = "for-loop" iterable="audio_files">
-		<a href="{{ href }}">{{ track_title }}</a>
-	</div>
+  <div class = "for-loop" iterable="audio_files">
+    <a href="{{ href }}">{{ track_title }}</a>
+  </div>
 </ul>
 ```
 
@@ -54,42 +55,41 @@ Here, `href` and `track_title` must both be members of each member of `audio_fil
 
 Nested for loops are also supported. 
 
+HTML:
 ```
 <ul>
-	<li class="for-loop" iterable="audio_files">
-		<a href="{{ href }}">{{ track_title }}</a>
-		<ul>
-			<li class="for-loop" iterable="stats">
-				{{ name }} : {{ value }}
-			</li>
-		</ul>
-	</div>
+  <li class="for-loop" iterable="audio_files">
+    <a href="{{ href }}">{{ track_title }}</a>
+    <ul>
+      <li class="for-loop" iterable="stats">
+        {{ name }} : {{ value }}
+      </li>
+    </ul>
+  </div>
 </ul>
 ```
 
 Here we'd expect the data to look something like this:
 
-
+JS:
 ```
-{"audio_files": [
-	{
-		"title": "my_beat",
-		"href": "my_beat.wav",
-		"stats: [
-			{"name" : "length_seconds", "value" : 253},
-			{"name" : "sample_rate", "value", "44.1kHZ"}
-		]
-	},
-	{
-		"title": "tune",
-		"href": "tune.wav",
-		"stats: [
-			{"name" : "length_seconds", "value" : 133},
-			{"name" : "sample_rate", "value", "48.0kHZ"}
-		]
-	}
-]
-};
+var template_data = {"audio_files": [
+  {
+    "title": "my_beat",
+    "href": "my_beat.wav",
+    "stats: [
+      {"name" : "length_seconds", "value" : 253},
+      {"name" : "sample_rate", "value", "44.1kHZ"}
+    ]
+  },
+  {
+    "title": "tune",
+	"href": "tune.wav",
+	"stats: [
+	  {"name" : "length_seconds", "value" : 133},
+      {"name" : "sample_rate", "value", "48.0kHZ"}
+  }
+]};
 ```
 
 ## Final step
