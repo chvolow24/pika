@@ -1,0 +1,294 @@
+<!doctype HTML>
+<html>
+  <head>
+    <style>
+
+      table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+      }
+
+      td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+      }
+
+      tr:nth-child(even) {
+	  background-color: #dddddd;
+      }
+
+    </style>
+    <script>
+      var template_data = {
+	  "title" : "Washington Avenue trees",
+	  "subtitle" : "From the 2015 tree census",
+	  "query" : `
+SELECT
+ts.species_common_name
+, ts.species_scientific_name
+, count(distinct tc.tree_id) as num_trees
+,  ARRAY_AGG(
+    STRUCT(
+    tc.tree_id
+    , tc.address
+    , tc.zipcode
+    , tc.status
+    , tc.health
+    )
+  ) as trees
+ FROM \`bigquery-public-data.new_york.tree_census_2015\` tc
+ JOIN \`bigquery-public-data.new_york.tree_species\` ts on 
+  tc.spc_latin = ts.species_scientific_name
+  AND tc.address like "%WASHINGTON%"
+  AND tc.address like "7%"
+ WHERE tc.zipcode = 11238
+ GROUP BY 1,2
+ ORDER By 1,2
+`,
+	  "results" : [{
+	      "species_common_name": "Callery Pear",
+	      "species_scientific_name": "Pyrus calleryana",
+	      "num_trees": "1",
+	      "trees": [{
+		  "tree_id": "168349",
+		  "address": "736 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Ginkgo",
+	      "species_scientific_name": "Ginkgo biloba",
+	      "num_trees": "1",
+	      "trees": [{
+		  "tree_id": "168332",
+		  "address": "784 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Green Ash",
+	      "species_scientific_name": "Fraxinus pennsylvanica",
+	      "num_trees": "1",
+	      "trees": [{
+		  "tree_id": "15811",
+		  "address": "701 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Honeylocust",
+	      "species_scientific_name": "Gleditsia triacanthos var. inermis",
+	      "num_trees": "8",
+	      "trees": [{
+		  "tree_id": "155605",
+		  "address": "762 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "155602",
+		  "address": "778 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "145751",
+		  "address": "783 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "181090",
+		  "address": "725 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "145750",
+		  "address": "787 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "145749",
+		  "address": "793 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "155603",
+		  "address": "774 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "168348",
+		  "address": "738 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Northern Red Oak",
+	      "species_scientific_name": "Quercus rubra",
+	      "num_trees": "2",
+	      "trees": [{
+		  "tree_id": "168592",
+		  "address": "714 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "168591",
+		  "address": "708 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Pin Oak",
+	      "species_scientific_name": "Quercus palustris",
+	      "num_trees": "3",
+	      "trees": [{
+		  "tree_id": "155604",
+		  "address": "766 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "181087",
+		  "address": "737 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180925",
+		  "address": "767 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Purpleleaf Plum",
+	      "species_scientific_name": "Prunus cerasifera",
+	      "num_trees": "1",
+	      "trees": [{
+		  "tree_id": "168347",
+		  "address": "746 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Fair"
+	      }]
+	  }, {
+	      "species_common_name": "Scholar Tree",
+	      "species_scientific_name": "Styphnolobium japonicum",
+	      "num_trees": "7",
+	      "trees": [{
+		  "tree_id": "180922",
+		  "address": "755 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180924",
+		  "address": "765 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180926",
+		  "address": "769 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180923",
+		  "address": "763 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180927",
+		  "address": "773 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180921",
+		  "address": "747 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "180920",
+		  "address": "745 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }, {
+	      "species_common_name": "Swamp White Oak",
+	      "species_scientific_name": "Quercus bicolor",
+	      "num_trees": "3",
+	      "trees": [{
+		  "tree_id": "181089",
+		  "address": "735 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "181088",
+		  "address": "735 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }, {
+		  "tree_id": "181091",
+		  "address": "723 WASHINGTON AVENUE",
+		  "zipcode": "11238",
+		  "status": "Alive",
+		  "health": "Good"
+	      }]
+	  }]
+      }
+    </script>
+    <script src="pika.js"></script>
+    <script>
+      window.onload = pika;
+    </script>
+  </head>
+
+  <body templateVar = "template_data">
+    <h3>{{ title }}</h3>
+    <h4>{{ subtitle }}</h4>
+    <p>The following data was obtained by running this query:</p>
+    <code>
+      {{ query }}
+    </code>
+    <p>Represented here are trees with recorded addresses in the 700s on Washington Avenue in Brooklyn, NY.</p>
+    <div class="for-loop" iterable="results">
+      <ul>
+	<li>
+	  <h4>{{ num_trees }} {{ species_common_name }}(s):</h4>
+	  <table style="border: solid 1px black;">
+	    <tr>
+	      <td>address</td>
+	      <td>status</td>
+	      <td>health</td>
+	    </tr>
+	    <tr class="for-loop" iterable="trees">
+	      <td>{{ address }}</td>
+	      <td>{{ status }}</td>
+	      <td>{{ health }}</td>
+	    </tr>
+	  </table>
+	</li>
+      </ul> 
+    </div>
+  </body>
+</html>

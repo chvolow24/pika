@@ -1,0 +1,57 @@
+<!doctype HTML>
+<html>
+  <head>
+    <script>
+      var template_data = {
+	  "metadata": {
+	      "title": "A small Pika example",
+	      "authors": [
+		  {"firstname": "Charlie", "lastname": "Volow"}
+	      ]
+	  },
+	  "presidents": [
+	      {"number":1,"president":"George Washington","birth_year":1732,"death_year":1799,"took_office":"1789-04-30","left_office":"1797-03-04","party":"No Party"},
+	      {"number":2,"president":"John Adams","birth_year":1735,"death_year":1826,"took_office":"1797-03-04","left_office":"1801-03-04","party":"Federalist"},
+	      {"number":46,"president":"Joseph 'Joe' Biden","birth_year":1942,"death_year":null,"took_office":"2021-01-20","left_office":null,"party":"Democratic"}
+	  ],
+	  "employees": [
+	      {"name":"Shyam", "email":"shyamjaiswal@gmail.com"},  
+	      {"name":"Bob", "email":"bob32@gmail.com"},  
+	      {"name":"Jai", "email":"jai87@gmail.com"}  
+	  ]
+      }
+    </script>
+    <script src="pika.js"></script>
+    <script>
+      window.onload = pika;
+    </script>
+  </head>
+  <body templateVar="template_data">
+    <h2>{{ metadata.title }}</h2>
+    <h4>primary author: {{ metadata.authors[0].firstname }}{{ metadata.authors[0].lastname }}</h4>
+    <div style="float:left; width=900px;">
+      <ul>
+	<h3>US Presidents</h3>
+	<div class="for-loop" iterable="presidents">
+	  <li>
+	    <h4>{{ president }}</h4>
+	    <p>Birth year: {{ birth_year }}</p>
+	    <p>Death year: {{ death_year }}</p>
+	    <p>Party: {{ party }}</p>
+	  </li>
+	</div>
+      </ul>
+    </div>
+    <div style="float:left; margin-left: 100px">
+      <h3>Employees</h3>
+      <ul>
+	<div class="for-loop" iterable="employees" >
+	  <li>
+	    <p>{{ name }}</p>
+	    <p>email: {{ email }}</p>
+	  </li>
+	</div>
+      </ul>
+    </div>
+  </body>
+</html>
