@@ -84,9 +84,9 @@ var template_data = {"audio_files": [
   },
   {
     "title": "tune",
-	"href": "tune.wav",
-	"stats: [
-	  {"name" : "length_seconds", "value" : 133},
+    "href": "tune.wav",
+    "stats: [
+      {"name" : "length_seconds", "value" : 133},
       {"name" : "sample_rate", "value", "48.0kHZ"}
   }
 ]};
