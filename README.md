@@ -5,6 +5,8 @@
 
 Pika is a single Javascript file that can be used for fleshing out an HTML template with data.
 
+## Setting the data
+
 In your HTML `<body>` element, set the `templateVar` attribute to the name of a global javascript object variable that you want to use to fill out your template. 
 
 (If you do not set `templateVar`, the global scope (`window`) will be used for template parameters instead.)
@@ -14,6 +16,9 @@ E.g.:
 ```
 <body templateVar="some_data">
 ```
+
+
+## Template parameters
 
 Now, you are free to access members of the `templateVar` (in this case, `some_data`) in your HTML, using double curly braces (w/ spaces):
 
@@ -29,7 +34,7 @@ var some_data = {
 <h3>by {{ author.name }}</h3>
 ```
 
-### For loops
+## For loops
 
 For loops are also supported by setting the `class` and `iterable` properties on arbitrary elements:
 
@@ -45,7 +50,7 @@ For loops are also supported by setting the `class` and `iterable` properties on
 Here, `href` and `track_title` must both be members of each member of `audio_files`, which must be an array. 
 
 
-### Nested loops
+## Nested for loops
 
 Nested for loops are also supported. 
 
@@ -87,6 +92,7 @@ Here we'd expect the data to look something like this:
 };
 ```
 
+## Final step
 Now all you need to do is add `pika.js` to your file and call `pika()` at load time to complete the template:
 
 ```
@@ -94,8 +100,9 @@ Now all you need to do is add `pika.js` to your file and call `pika()` at load t
 <script>
 	window.onload = pika;
 </script>
+```
 
 
-### Examples
+## Examples
 
 check out `EXAMPLE_presidents.html` and `EXAMPLE_trees.html`, which need only exist in the same directory as a copy of `pika.js` to be filled. 
