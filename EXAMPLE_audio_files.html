@@ -1,0 +1,41 @@
+<!doctype HTML>
+<html>
+  <head>
+    <script>
+      var template_data = {"audio_files": [
+	  {
+	      "title": "my_beat",
+	      "href": "my_beat.wav",
+	      "stats": [
+		  {"name" : "length_seconds", "value" : 253},
+		  {"name" : "sample_rate", "value": "44.1kHZ"}
+	      ]
+	  },
+	  {
+	      "title": "tune",
+	      "href": "tune.wav",
+	      "stats": [
+		  {"name" : "length_seconds", "value" : 133},
+		  {"name" : "sample_rate", "value": "48.0kHZ"}
+	      ]
+	  }
+      ]};
+    </script>
+    <script src="pika.js"></script>
+    <script>
+      window.onload = pika;
+    </script>
+  </head>
+  <body templateVar="template_data">
+    <ul>
+      <li class="for-loop" iterable="audio_files">
+	<a href="{{ href }}">{{ title }}</a>
+	<ul>
+	  <li class="for-loop" iterable="stats">
+              {{ name }} : {{ value }}
+	  </li>
+	</ul>
+      </li>
+    </ul>
+  </body>
+</html>

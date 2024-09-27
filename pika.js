@@ -75,6 +75,7 @@ function pika() {
 	} else {
 	    tagAdd = tagAdd.toLowerCase();
 	}
+	
 	for (let i=0; i<data.length; i++) {
 	    let cpy = el.innerHTML.slice(1);
 	    for (let m=0; m<matches.length; m++) {
@@ -87,8 +88,10 @@ function pika() {
 	    }
 	    newInnerHTML += cpy;
 	}
-	if (tagAdd === "tr") {
+	if (tagAdd != null) {
+	    let parent = el.parentElement;
 	    el.outerHTML = newInnerHTML;
+	    el = parent;
 	} else {
 	    el.innerHTML = newInnerHTML;
 	}
