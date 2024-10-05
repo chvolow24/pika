@@ -29,7 +29,7 @@ JS:
 var some_data = {
   "author": {
     "first_name": "Charlie",
-	"last_name": "Volow"
+    "last_name": "Volow"
   }
 }
 ```
