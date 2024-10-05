@@ -1,3 +1,6 @@
+// Pika
+// by Charlie Volow (charlie-volow.com)
+
 function pika() {
     
     var templateParamRe = /{{ ([^ ]*) }}/g

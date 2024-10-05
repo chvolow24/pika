@@ -3,7 +3,8 @@
 ### A tiny client-side templating tool
 
 
-Pika is a single Javascript file that can be used for fleshing out an HTML template with data.
+Pika is a single Javascript file that can be used to flesh out an HTML template with data.
+
 
 ## Setting the data
 
@@ -27,29 +28,31 @@ JS:
 ```
 var some_data = {
   "author": {
-    "name": "Charlie"
+    "first_name": "Charlie",
+	"last_name": "Volow"
   }
 }
 ```
 HTML:
 ```
-<h3>by {{ author.name }}</h3>
+<h3>by {{ author.name }} {{author.last_name }}</h3>
 ```
 
 ## For loops
 
-For loops are also supported by setting the `class` and `iterable` properties on arbitrary elements:
+For loops are also supported by setting the `class` and `iterable` properties on arbitrary elements. `iterable` should be the name of a javascript array.
 
 ```
 <ul>
-  <div class = "for-loop" iterable="audio_files">
+  <div class="for-loop" iterable="audio_files">
     <a href="{{ href }}">{{ track_title }}</a>
   </div>
 </ul>
 ```
 
-Here, `href` and `track_title` must both be members of each member of `audio_files`, which must be an array. 
+Here, `href` and `track_title` must both be acessible on each member of `audio_files`, which is an array. 
 
+If the `for-loop` element is `<tr>` or `<li>`, the outer HTML will be replicated with each iteration; otherwise, the inner HTML will be replicated.
 
 ## Nested for loops
 
@@ -59,12 +62,12 @@ HTML:
 ```
 <ul>
   <li class="for-loop" iterable="audio_files">
-	<a href="{{ href }}">{{ title }}</a>
-	<ul>
+    <a href="{{ href }}">{{ title }}</a>
+    <ul>
       <li class="for-loop" iterable="stats">
-	  {{ name }} : {{ value }}
-	  </li>
-	</ul>
+	    {{ name }} : {{ value }}
+      </li>
+    </ul>
   </li>
 </ul>
 ```
